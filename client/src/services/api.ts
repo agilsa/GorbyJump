@@ -42,7 +42,7 @@ apiClient.interceptors.response.use(
 
 export const twitterAPI = {
   // Check if user follows target account
-  checkFollow: async (userId: string, targetUsername: string = "GORBY_JUMP") => {
+  checkFollow: async (userId: string, targetUsername: string = "JumpGorby") => {
     try {
       const response = await apiClient.post("/api/twitter/check-follow", {
         userId,
@@ -54,7 +54,7 @@ export const twitterAPI = {
     }
   },
 
-  checkRetweet: async (tweetId: string) => {
+  checkRetweet: async (tweetId: string = "1940748103008899446") => {
     try {
       const response = await apiClient.post("/api/twitter/check-retweet", {
         tweetId,
