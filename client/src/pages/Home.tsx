@@ -262,26 +262,22 @@ const Home = () => {
 
         case "Retweet":
           if (link) {
+            const tweetId = link.split("tweet_id=")[1];
             window.open(link, "_blank");
 
             setTimeout(async () => {
               try {
-                const response = await axios.post(
-                  "http://localhost:5000/api/twitter/check-retweet",
-                  {
-                    tweetId: "1940748103008899446",
-                  },
-                  { withCredentials: true }
-                );
+                const response = await twitterAPI.checkRetweet(tweetId);
 
                 if (response.data.hasRetweeted) {
                   saveTaskCompletion(task.title);
-                  console.log("Retweet task completed!");
+                  console.log("✅ Retweet task completed!");
                 }
               } catch (error) {
-                console.error("Error checking retweet status:", error);
+                console.error("❌ Error checking retweet status:", error);
+              } finally {
+                setLoadingTasks((prev) => ({ ...prev, [taskIndex]: false }));
               }
-              setLoadingTasks((prev) => ({ ...prev, [taskIndex]: false }));
             }, 5000);
           }
           break;
