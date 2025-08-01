@@ -269,7 +269,7 @@ const Home = () => {
                 const response = await axios.post(
                   "http://localhost:5000/api/twitter/check-retweet",
                   {
-                    tweetId: "https://twitter.com/intent/retweet?tweet_id=1940748103008899446",
+                    tweetId: "1940748103008899446",
                   },
                   { withCredentials: true }
                 );
