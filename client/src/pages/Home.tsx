@@ -217,7 +217,6 @@ const Home = () => {
   const handleTaskClick = async (taskIndex: number, link: string | null) => {
     const task = tasks[taskIndex];
 
-    // Check if task requires Twitter auth
     if (task.requiresAuth && !twitterUser) {
       handleTwitterAuth();
       return;
